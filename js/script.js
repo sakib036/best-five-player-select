@@ -25,9 +25,13 @@ function selectPlayer(player){
 function getTheValueOfInput(inptId){
     const getInputValueById=document.getElementById(inptId);
         const getInputValueByIdString=getInputValueById.value;
-            const getInputValue=parseInt(getInputValueByIdString);
-           return (getInputValue); 
-          
+        if(isNaN(getInputValueByIdString)==false){
+                const getInputValue=parseInt(getInputValueByIdString);
+                return (getInputValue);   
+        }
+        else{
+            return(-1)
+        }        
 }
 // set the value in target place common Function
 function innerTextByID(innerTextId, value){
@@ -41,7 +45,7 @@ function innerTextByID(innerTextId, value){
 document.getElementById('btn-calculate').addEventListener('click',function(){
     const getPlayerAmount=getTheValueOfInput('player-amount');
     // if per playe amount input is a number and geter than 0 then
-    if(getPlayerAmount>=0){
+    if(getPlayerAmount>=0 && typeof(getPlayerAmount)==="number"){
         const playerSelect=document.getElementById('selecct-player')
         const nomberOfPlayer=playerSelect.children.length;
         // if select any player
